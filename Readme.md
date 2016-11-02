@@ -5,10 +5,10 @@ This is a beginner level tutorial to get you started with GraphQL.  I hope that 
 ### Introdution
 [GraphQL][gql] is an appliction layer query language by Facebook. With GraphQL, you can define your backend as a graph-based schema. The clients can get predicatable results by quering your dataset for exactly what they need.
 
-To demonstrate this, let us quickly set up a simple GraphhQL server on top on Github user API. All of the code covered in this tutorial is available [here][repo].
+To demonstrate this, let us quickly set up a simple GraphhQL server on top of Github user API. All of the code covered in this tutorial is available [here][repo].
 
 ### Setting up a server
-First, we will setup a HTTP server to receive graphql queries. I am using [Express][express] here since graphql provides a middleware for express app to create a graphql server easily.
+First, we will setup an HTTP server to receive graphql queries. I am using [Express][express] here since graphql provides a [middleware for express][gqlexpress] app to create a graphql server easily.
 
 To get started, create a new node project, or clone this repository:
 
@@ -27,7 +27,7 @@ npm install -g babel-cli
 npm install --save-dev babel-cli babel-preset-es2015
 ```
 
-Let us quickly create a HTTP server using express that listens to port `7600`. In ewa-graphql folder, create a new file named `server.js` with contents:
+Let us quickly create an HTTP server using express that listens to port `7600`. In ewa-graphql folder, create a new file named `server.js` with contents:
 
 ```
 import express from 'express'
@@ -48,7 +48,7 @@ app.use(graphQLHTTP({
 app.listen(7600);
 ```
 
-You might be wondering what is `graphiql` and why it is set to `true`. GraphIQL (pronounced graphical) is an in browser IDE for exploring GraphQL. To see how it looks like try running `npm start` and open `http://localhost:7600` in your browser. You must see an error like this:
+You might be wondering what is `graphiql` and why it is set to `true`. GraphIQL (pronounced graphical) is an in browser IDE for exploring GraphQL. To see how it looks, try running `npm start` and open `http://localhost:7600` in your browser. You must see an error like this:
 
 ```
 {
@@ -408,3 +408,4 @@ In the upcoming tutorials, we will see how GraphQL can be used to get many resou
 [repo]: <https://github.com/adhbh/ewa-graphql>
 [express]: <https://www.npmjs.com/package/express>
 [dataloader]: <https://github.com/facebook/dataloader>
+[gqlexpress]:<https://github.com/graphql/express-graphql>
