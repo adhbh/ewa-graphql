@@ -11,7 +11,7 @@ This article is first in the new tutorial series on GraphQL. In this series, we 
 
 In this first tutorial, we wil begin with creating a GraphQL server along with an open-source GraphQL editor called GraphIQL. We will then create a simple GraphQL schema similar to Github's user object. We will also learn about query arguments and aliases and their applications.
 
-Let us quickly begin with a brief introduction about GraphQL:
+Let us begin with a brief introduction about GraphQL:
 
 [GraphQL][gql] is an appliction layer query language by Facebook. With GraphQL, you can define your backend as a graph-based schema. The clients can get predicatable results by quering your dataset for exactly what they need.
 
@@ -37,7 +37,7 @@ npm install -g babel-cli
 npm install --save-dev babel-cli babel-preset-es2015
 ```
 
-Let us quickly create an HTTP server using express that listens to port `7600`. In ewa-graphql folder, create a new file named `server.js` with contents:
+Let us use `express` to create an HTTP server that listens to port `7600`. In ewa-graphql folder, create a new file named `server.js` with contents:
 
 ```
 import express from 'express'
@@ -67,7 +67,7 @@ app.use(graphQLHTTP({
 app.listen(7600);
 ```
 
-You might be wondering what is `graphiql` and why it is set to `true`. GraphIQL (pronounced graphical) is an in browser IDE for exploring GraphQL. It has built-in support for documentation and autocompletion. You'll be using it throughout this course. 
+You might be wondering what is `graphiql` and why it is set to `true`. GraphIQL (pronounced graphical) is an in-browser IDE for exploring GraphQL. It has built-in support for documentation and autocompletion. You'll be using it throughout this course. 
 
 To see how it looks, try running `npm start` and open `http://localhost:7600` in your browser. You must see an error like this:
 
@@ -81,7 +81,7 @@ To see how it looks, try running `npm start` and open `http://localhost:7600` in
 }
 ```
 
-We need to define a schema for which we need to know about the GraphQL type system and how it describes what data can be queried. In the next section, we will define a schema for Github's user object. For now, for sake of seeing the Graphiql interface, just create a new file `schema.js` with contents: 
+For executing GraphQL quries using `grpahiql`, we need to define a `schema`. We need to know about the GraphQL type system and how it describes what data can be queried. In the next section, we will define a schema for Github's user object. For now, for sake of seeing the Graphiql interface, just create a new file `schema.js` with contents: 
 
 ```
 import { GraphQLObjectType, GraphQLString }
@@ -117,16 +117,16 @@ app.use(graphQLHTTP({
 app.listen(7600);
 ```
 
-What we have created is a "hello world" for GraphQL applications. To see it working, run `npm start` and go to `http://localhost:7600`. You will be able to see GraphIQL IDE. Now it is time that we run our first graphql query!
+What we have created is a "hello world" for GraphQL applications. To see it the `GraphIQL` IDE, run `npm start` and go to `http://localhost:7600`. Now it is time that we run our first graphql query!
 
-Paste the following in graphiql editor 
+Paste the following in GraphIQL editor 
 
 ```
 {
   hello
 }
 ```
-and then click on the 'play' button on top left corner next to the graphiql logo. The server should repsonse with the following data:
+and then click on the 'play' button on top left corner next to the GraphIQL logo. The server should repsonse with the following data:
 
 ```
 {
@@ -395,7 +395,7 @@ Image 2 here
 ### Query alias
 As the name suggests, alias lets you rename the result of a field to anything you want.
 
-Try running the following query in `graphiql` :
+Try running the following query in `GraphIQL` :
 ```
 {
   user(login: "tj") {
