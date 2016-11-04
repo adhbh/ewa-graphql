@@ -9,7 +9,7 @@ This article is first in the new tutorial series on GraphQL. In this series, we 
 
 3. the best practices for using GraphQL in your projects.
 
-In this first tutorial, we will begin with creating a GraphQL server along with an open-source GraphQL editor called GraphIQL. Following that, we will create a simple GraphQL schema similar to Github's user object. We will also learn about `query arguments` and `aliases` and their applications.
+In this first tutorial, we will begin with creating a GraphQL server using an open-source GraphQL editor called GraphIQL. Following that, we will create a simple GraphQL schema similar to Github's user object. We will also learn about `query arguments` and `aliases` and their applications.
 
 Let us begin with a brief introduction about GraphQL:
 
@@ -81,7 +81,7 @@ To see how it looks, try running `npm start` and open `http://localhost:7600` in
 }
 ```
 
-For executing GraphQL quries using `grpahiql`, we need to define a `schema`. We need to know about the GraphQL type system and how it describes what data can be queried. In the next section, we will define a schema for Github's user object. For now, for sake of seeing the Graphiql interface, just create a new file `schema.js` with contents: 
+For executing GraphQL quries using `grpahiql`, we need to define a `schema`. We should know about the GraphQL type system and how it describes what data can be queried. In the next section, we will define a schema for Github's user object. For now, for sake of seeing the Graphiql interface, let us create a new file `schema.js` with contents: 
 
 ```
 import { GraphQLObjectType, GraphQLString }
@@ -264,16 +264,18 @@ const QueryType = new GraphQLObjectType({
 })
 ```
 There are 2 things to note here:
-1. The arguments can only be of type scalar, enum or a list of scalars or enums.
+1. The query arguments can only be of type scalar, enum or a list of scalars or enums.
+
 2. When we write the GraphQL schema, we will also have to provide the resolve method which will be invoked by the GraphQL execution engine when data are actually queried. 
 
 That means, when `user` field is queried from `QueryType`, it will first execute the resolve method on the `user` field, and the data returned is an instance of `UserType` object.
 
 Also, 
-1. The first parameter of resolve function is the data returned from the parent object (in the above case, parent object is the default object called `root`). 
+1. The first parameter of resolve function is the data returned from the parent object (in the above case, parent object is the default object called `root`).
+
 2. The second parameter are the `arguments` for that particular field. (In this case: `{ login: 'xyz' }` )
 
-The third argument is context about which we will talk in upcoming tutorials.
+The third argument is context about which you will learn in upcoming tutorials.
 
 We can use `resolve` to transform the data as we require. We will now demonstrate this in `UserType` object.
 ```
@@ -294,7 +296,7 @@ const UserType = new GraphQLObjectType({
     },
 })
 ```
-Here, we are telling our GraphQL server that if `about` field is asked for in the user object, you should look for `user['bio']` and not `user['about']`.
+Here, we are telling the GraphQL server that if `about` field is asked for in the user object, you should look for `user['bio']` and not `user['about']`.
 
 
 ### Using a real datasource
