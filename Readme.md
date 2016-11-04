@@ -1,14 +1,24 @@
 # Setting up your first GraphQL server
 
-This is a beginner level tutorial to get you started with GraphQL.  I hope that by end of this tutorial you will consider using GraphQL in your projects. For this tutorial, we will be using [reference implementation of GraphQL][gqljs] in Javascript.
+###Introduction
+This article is first in the new tutorial series on GraphQL. In this series, we will do a walkthrough of key GraphQL concepts one by one. I have tried to keep every lesson short and simple so that you can work on it whenever you have some free time. By the end of this tutorial series, you will learn about: 
 
-### Introdution
+1. GraphQL queries and mutations,
+
+2. schema and types system, and
+
+3. the best practices for using GraphQL in your projects.
+
+In this first tutorial, we wil begin with creating a GraphQL server along with an open-source GraphQL editor called GraphIQL. We will then create a simple GraphQL schema similar to Github's user object. We will also learn about query arguments and aliases and their applications.
+
+Let us quickly begin with a brief introduction about GraphQL:
+
 [GraphQL][gql] is an appliction layer query language by Facebook. With GraphQL, you can define your backend as a graph-based schema. The clients can get predicatable results by quering your dataset for exactly what they need.
 
-To demonstrate this, let us quickly set up a simple GraphhQL server on top of Github user API. All of the code covered in this tutorial is available [here][repo].
+To demonstrate this, let us quickly set up a simple GraphhQL server on top of Github user API. We will be using [reference implementation of GraphQL][gqljs] in Javascript. All of the code covered in this tutorial is available [here][repo].
 
 ### Setting up a server
-First, we will setup an HTTP server to receive graphql queries. I am using [Express][express] here since graphql provides a [middleware for express][gqlexpress] app to create a graphql server easily.
+First, we will setup an HTTP server to receive graphql queries. I am using [Express][express] here since graphql provides a pluggable [middleware for express][gqlexpress] applications to easily create a graphql server.
 
 To get started, create a new node project, or clone this repository:
 
@@ -35,6 +45,15 @@ const app = express()
 app.listen(7600)
 ```
 
+We can now added a `start` script in `package.json` file which will transpile the code using babel and start the express server:
+
+```
+"scripts": {
+    "start": "babel-node --presets es2015 server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+}
+``` 
+
 We will now import `express-graphql` and add it as a middleware to our express app:
 ```
 import express from 'express'
@@ -48,7 +67,9 @@ app.use(graphQLHTTP({
 app.listen(7600);
 ```
 
-You might be wondering what is `graphiql` and why it is set to `true`. GraphIQL (pronounced graphical) is an in browser IDE for exploring GraphQL. To see how it looks, try running `npm start` and open `http://localhost:7600` in your browser. You must see an error like this:
+You might be wondering what is `graphiql` and why it is set to `true`. GraphIQL (pronounced graphical) is an in browser IDE for exploring GraphQL. It has built-in support for documentation and autocompletion. You'll be using it throughout this course. 
+
+To see how it looks, try running `npm start` and open `http://localhost:7600` in your browser. You must see an error like this:
 
 ```
 {
@@ -114,8 +135,6 @@ and then click on the 'play' button on top left corner next to the graphiql logo
   }
 }
 ```
-
-Insert Image 1 here
 
 We will now learn how to define a schema for any kind of dataset.
 
@@ -278,7 +297,7 @@ const UserType = new GraphQLObjectType({
 Here, we are telling our GraphQL server that if `about` field is asked for in the user object, you should look for `user['bio']` and not `user['about']`.
 
 
-### Fetching real data from Github API
+### Using a real datasource
 
 At this point, we have a well-defined GraphQL schema. Now we should make it fetch real data from Github API. We will use `node-fetch` to talk with Github API
 
@@ -401,7 +420,9 @@ For example:
 ```
 
 ### What's next?
-In the upcoming tutorials, we will see how GraphQL can be used to get many resources in a single request. While typical REST APIs require loading from multiple URLs, GraphQL APIs get all the data your app needs with a single endpoint. We will also see how [dataloader][dataloader] can be used with GraphQL for caching and batching requests.
+In this tutorial, we have created a GraphQL sandbox for us using a real datasource. We will use the same sandbox in the upcoming tutorials to learn about concepts like mutations, fragments, query variables and several advanced GraphQL types like interfaces and unions.
+
+In the next tutorial, we will see how GraphQL can be used to get many resources in a single request. While typical REST APIs require loading from multiple URLs, GraphQL APIs get all the data your app needs with a single endpoint. We will also see how [dataloader][dataloader] can be used with GraphQL for caching and batching requests.
 
 [gqljs]: <https://github.com/graphql/graphql-js>
 [gql]: <http://graphql.org/>
