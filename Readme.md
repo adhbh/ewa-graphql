@@ -136,7 +136,7 @@ and then click on the 'play' button on top left corner next to the GraphIQL logo
 }
 ```
 
-We will now learn how to define a schema for any kind of dataset.
+We will now learn how to define a schema for dataset.
 
 ### Defining a GraphQL schema
 GraphQL query language is basically about selecting fields on objects.
