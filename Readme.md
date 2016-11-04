@@ -9,7 +9,7 @@ This article is first in the new tutorial series on GraphQL. In this series, we 
 
 3. the best practices for using GraphQL in your projects.
 
-In this first tutorial, we wil begin with creating a GraphQL server along with an open-source GraphQL editor called GraphIQL. We will then create a simple GraphQL schema similar to Github's user object. We will also learn about query arguments and aliases and their applications.
+In this first tutorial, we will begin with creating a GraphQL server along with an open-source GraphQL editor called GraphIQL. Following that, we will create a simple GraphQL schema similar to Github's user object. We will also learn about `query arguments` and `aliases` and their applications.
 
 Let us begin with a brief introduction about GraphQL:
 
@@ -420,7 +420,7 @@ For example:
 ```
 
 ### What's next?
-In this tutorial, we have created a GraphQL sandbox for us using a real datasource. We will use the same sandbox in the upcoming tutorials to learn about concepts like mutations, fragments, query variables and several advanced GraphQL types like interfaces and unions.
+In this tutorial, we have created a GraphQL server for us using a real datasource. We will use this in the upcoming tutorials to learn about concepts like mutations, fragments, query variables and several advanced GraphQL types like interfaces and unions.
 
 In the next tutorial, we will see how GraphQL can be used to get many resources in a single request. While typical REST APIs require loading from multiple URLs, GraphQL APIs get all the data your app needs with a single endpoint. We will also see how [dataloader][dataloader] can be used with GraphQL for caching and batching requests.
 
