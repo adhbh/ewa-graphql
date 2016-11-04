@@ -270,10 +270,11 @@ There are 2 things to note here:
 
 That means, when `user` field is queried from `QueryType`, it will first execute the resolve method on the `user` field, and the data returned is an instance of `UserType` object.
 
-Also, 
+Also, `resolve` functions take two parameters:
+
 1. The first parameter of resolve function is the data returned from the parent object (in the above case, parent object is the default object called `root`).
 
-2. The second parameter are the `arguments` for that particular field. (In this case: `{ login: 'xyz' }` )
+2. The second parameter is the `arguments` for that particular field. (In this case: `{ login: 'xyz' }` )
 
 The third argument is context about which you will learn in upcoming tutorials.
 
