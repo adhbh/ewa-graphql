@@ -195,7 +195,7 @@ It is intutive to note that few of the fields like `name` and `email` are of typ
 
 We will only consider some fields from this json, and create our user object using GraphQL.
 
-Any new object can be grated using GraphQLObjectType like below:
+Any new object can be created using `GraphQLObjectType` like below:
 ```
 const UserType = new GraphQLObjectType({
     name: 'UserType',
@@ -204,7 +204,7 @@ const UserType = new GraphQLObjectType({
 })
 ```
 
-It is important to note that the `name` for any two GraphQL objects in a schema sould not be same. Now we will add some fields to this object:
+It is important to note that the `name` for any two GraphQL objects in a schema sould not be same. Let's add some fields to this object:
 
 ```
 const UserType = new GraphQLObjectType({
@@ -220,7 +220,7 @@ const UserType = new GraphQLObjectType({
 })
 ```
 
-Now let us create the special Query object which is the `root` of our graphql schema. The `root` will contain a `user` field which should be of type `UserType`.
+We will now create the special Query object which is the `root` of our graphql schema. The `root` will contain a `user` field which should be of type `UserType`.
 
 ```
 const QueryType = new GraphQLObjectType({
@@ -299,7 +299,7 @@ Here, we are telling our GraphQL server that if `about` field is asked for in th
 
 ### Using a real datasource
 
-At this point, we have a well-defined GraphQL schema. Now we should make it fetch real data from Github API. We will use `node-fetch` to talk with Github API
+At this point, we have a well-defined GraphQL schema. Now we should make it fetch real data from Github API. We will use [node-fetch][nf] to talk with Github API
 
 ```
 npm install --save node-fetch
@@ -430,3 +430,4 @@ In the next tutorial, we will see how GraphQL can be used to get many resources 
 [express]: <https://www.npmjs.com/package/express>
 [dataloader]: <https://github.com/facebook/dataloader>
 [gqlexpress]:<https://github.com/graphql/express-graphql>
+[nf]:<https://www.npmjs.com/package/node-fetch>
