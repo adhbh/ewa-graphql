@@ -1,24 +1,25 @@
 # Setting up your first GraphQL server
 
 ###Introduction
-This article is first in the new tutorial series on GraphQL. In this series, we will do a walkthrough of key GraphQL concepts one by one. I have tried to keep every lesson short and simple so that you can work on it whenever you have some free time. By the end of this tutorial series, you will learn about: 
+This article is first in the new tutorial series on GraphQL. In this series, we will do a walkthrough of key GraphQL concepts one by one. Every lesson has been kept short and simple so that you can work on it easily in free time. By the end of this tutorial series, you will have learned about:
 
-1. GraphQL queries and mutations,
+1. GraphQL queries and mutations
 
-2. schema and types system, and
+2. Schema and types system
 
-3. the best practices for using GraphQL in your projects.
+3. The best practices for using GraphQL in your projects
 
 In this first tutorial, we will begin with creating a GraphQL server using an open-source GraphQL editor called GraphIQL. Following that, we will create a simple GraphQL schema similar to Github's user object. We will also learn about `query arguments` and `aliases` and their applications.
 
 Let us begin with a brief introduction about GraphQL:
 
-[GraphQL][gql] is an appliction layer query language by Facebook. With GraphQL, you can define your backend as a graph-based schema. The clients can get predicatable results by quering your dataset for exactly what they need.
+[GraphQL][gql] is an application layer query language by Facebook. With GraphQL, you can define your backend as a graph-based schema. The clients can get predictable results by querying your dataset for exactly what they need.
 
-To demonstrate this, let us quickly set up a simple GraphhQL server on top of Github user API. We will be using [reference implementation of GraphQL][gqljs] in Javascript. All of the code covered in this tutorial is available [here][repo].
+To demonstrate this, let us quickly set up a simple GraphQL server on top of Github API. We will be using [reference implementation of GraphQL][gqljs] in Javascript. All of the code covered in this tutorial is available [here][repo].
 
 ### Setting up a server
-First, we will setup an HTTP server to receive graphql queries. I am using [Express][express] here since graphql provides a pluggable [middleware for express][gqlexpress] applications to easily create a graphql server.
+First, we will setup an HTTP server to receive GraphQL queries. I am using Express here since GraphQL provides a pluggable [middleware for express][gqlexpress] applications to easily create a GraphQL server.
+
 
 To get started, create a new node project, or clone this repository:
 
@@ -81,7 +82,7 @@ To see how it looks, try running `npm start` and open `http://localhost:7600` in
 }
 ```
 
-For executing GraphQL quries using `grpahiql`, we need to define a `schema`. We should know about the GraphQL type system and how it describes what data can be queried. In the next section, we will define a schema for Github's user object. For now, for sake of seeing the Graphiql interface, let us create a new file `schema.js` with contents: 
+For executing GraphQL queries using `grpahiql`, we need to define a `schema`. We should know about the GraphQL type system and how it describes what data can be queried. In the next section, we will define a schema for Github's user object. For now, for sake of seeing the GraphIQL interface, let us create a new file `schema.js` with contents: 
 
 ```
 import { GraphQLObjectType, GraphQLString }
@@ -126,7 +127,7 @@ Paste the following in GraphIQL editor
   hello
 }
 ```
-and then click on the 'play' button on top left corner next to the GraphIQL logo. The server should repsonse with the following data:
+and then click on the 'play' button on top left corner next to the GraphIQL logo. The server should response with the following data:
 
 ```
 {
@@ -191,7 +192,7 @@ Let us analyse Github's user API. The json returned by `https://api.github.com/u
 }
 ```
 
-It is intutive to note that few of the fields like `name` and `email` are of type `String`, few fields like `following` and `followers` are `Integers`, while `site_admin` is a `Boolean`.
+It is intuitive to note that few of the fields like `name` and `email` are of type `String`, few fields like `following` and `followers` are `Integers`, while `site_admin` is a `Boolean`.
 
 We will only consider some fields from this json, and create our user object using GraphQL.
 
@@ -204,7 +205,7 @@ const UserType = new GraphQLObjectType({
 })
 ```
 
-It is important to note that the `name` for any two GraphQL objects in a schema sould not be same. Let's add some fields to this object:
+It is important to note that the `name` for any two GraphQL objects in a schema should not be same. Let's add some fields to this object:
 
 ```
 const UserType = new GraphQLObjectType({
@@ -263,7 +264,8 @@ const QueryType = new GraphQLObjectType({
     },
 })
 ```
-There are 2 things to note here:
+There are two things to note here:
+
 1. The query arguments can only be of type scalar, enum or a list of scalars or enums.
 
 2. When we write the GraphQL schema, we will also have to provide the resolve method which will be invoked by the GraphQL execution engine when data are actually queried. 
@@ -423,7 +425,7 @@ For example:
 ```
 
 ### What's next?
-In this tutorial, we have created a GraphQL server for us using a real datasource. We will use this in the upcoming tutorials to learn about concepts like mutations, fragments, query variables and several advanced GraphQL types like interfaces and unions.
+In this tutorial, we have created a GraphQL server using a real datasource. We will use this in the upcoming tutorials to learn about concepts like mutations, fragments, query variables and several advanced GraphQL types like interfaces and unions.
 
 In the next tutorial, we will see how GraphQL can be used to get many resources in a single request. While typical REST APIs require loading from multiple URLs, GraphQL APIs get all the data your app needs with a single endpoint. We will also see how [dataloader][dataloader] can be used with GraphQL for caching and batching requests.
 
